@@ -44,6 +44,6 @@ Player A wins the game
 `mvn package`
 
 ## Run
-`java -jar target/tennis-<version>.jar`
+`java -jar target/tennis.jar`
 
 The program will wait for **user input** *(game rally)* to start the game.
