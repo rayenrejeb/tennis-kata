@@ -1,4 +1,4 @@
-package domain.model;
+package rayen.rejeb.tennis.domain.model;
 
 public enum ScoreEnum {
 

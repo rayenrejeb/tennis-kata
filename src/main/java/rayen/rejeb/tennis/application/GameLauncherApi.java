@@ -1,4 +1,4 @@
-package application;
+package rayen.rejeb.tennis.application;
 
 public interface GameLauncherApi {
 

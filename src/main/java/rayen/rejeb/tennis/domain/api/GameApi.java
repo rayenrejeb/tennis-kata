@@ -1,7 +1,7 @@
-package domain.api;
+package rayen.rejeb.tennis.domain.api;
 
-import domain.model.Game;
-import domain.model.PlayerEnum;
+import rayen.rejeb.tennis.domain.model.Game;
+import rayen.rejeb.tennis.domain.model.PlayerEnum;
 
 public interface GameApi {
 

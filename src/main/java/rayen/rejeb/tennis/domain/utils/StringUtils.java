@@ -1,4 +1,4 @@
-package domain.utils;
+package rayen.rejeb.tennis.domain.utils;
 
 public class StringUtils {
 

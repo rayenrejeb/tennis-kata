@@ -5,13 +5,14 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-import domain.model.PlayerEnum;
-import domain.model.ScoreEnum;
-import domain.spi.ScoreDisplaySpi;
-import domain.model.Player;
+import rayen.rejeb.tennis.domain.model.PlayerEnum;
+import rayen.rejeb.tennis.domain.model.ScoreEnum;
+import rayen.rejeb.tennis.domain.spi.ScoreDisplaySpi;
+import rayen.rejeb.tennis.domain.model.Player;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import org.junit.jupiter.api.Test;
+import rayen.rejeb.tennis.infrastructure.ScoreDisplay;
 
 class ScoreDisplayTest {
 
@@ -27,10 +28,10 @@ class ScoreDisplayTest {
     // Given
     Player playerOne = mock(Player.class);
     Player playerTwo = mock(Player.class);
-    when(playerOne.getName()).thenReturn(PlayerEnum.PLAYER_A);
-    when(playerTwo.getName()).thenReturn(PlayerEnum.PLAYER_B);
-    when(playerOne.getScore()).thenReturn(ScoreEnum.FIFTEEN);
-    when(playerTwo.getScore()).thenReturn(ScoreEnum.ZERO);
+    when(playerOne.getNameCharacter()).thenReturn(PlayerEnum.PLAYER_A.getPlayerName());
+    when(playerTwo.getNameCharacter()).thenReturn(PlayerEnum.PLAYER_B.getPlayerName());
+    when(playerOne.getActualScore()).thenReturn(ScoreEnum.FIFTEEN.getActualScore());
+    when(playerTwo.getActualScore()).thenReturn(ScoreEnum.ZERO.getActualScore());
     // When
     scoreDisplay.displayScore(playerOne, playerTwo);
     // Then
@@ -41,11 +42,11 @@ class ScoreDisplayTest {
   void should_designate_winner() {
     // Given
     Player playerOne = mock(Player.class);
-    when(playerOne.getName()).thenReturn(PlayerEnum.PLAYER_A);
+    when(playerOne.getNameCharacter()).thenReturn(PlayerEnum.PLAYER_A.getPlayerName());
     // When
     scoreDisplay.displayWinner(playerOne);
     // Then
-    assertEquals("Player A wins the game", outputStreamCaptor.toString().trim());
+    assertEquals("[32mPlayer A wins the game", outputStreamCaptor.toString().trim());
   }
 
   @Test

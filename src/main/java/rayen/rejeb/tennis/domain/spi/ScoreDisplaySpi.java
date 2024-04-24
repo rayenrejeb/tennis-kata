@@ -1,6 +1,6 @@
-package domain.spi;
+package rayen.rejeb.tennis.domain.spi;
 
-import domain.model.Player;
+import rayen.rejeb.tennis.domain.model.Player;
 
 public interface ScoreDisplaySpi {
 

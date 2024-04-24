@@ -3,12 +3,12 @@ package IT;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import application.GameLauncher;
-import application.GameLauncherApi;
-import domain.api.GameApi;
-import domain.service.TennisGameService;
-import domain.spi.ScoreDisplaySpi;
-import infrastructure.ScoreDisplay;
+import rayen.rejeb.tennis.application.GameLauncher;
+import rayen.rejeb.tennis.application.GameLauncherApi;
+import rayen.rejeb.tennis.domain.api.GameApi;
+import rayen.rejeb.tennis.domain.service.TennisGameService;
+import rayen.rejeb.tennis.domain.spi.ScoreDisplaySpi;
+import rayen.rejeb.tennis.infrastructure.ScoreDisplay;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import org.junit.jupiter.api.Test;
@@ -31,7 +31,7 @@ class ITTennisGameTest {
         Player A : 30 | Player B : 15
         Player A : 30 | Player B : 30
         Player A : 40 | Player B : 30
-        Player A wins the game
+        [32mPlayer A wins the game
         """;
     // When
     tennisGameLauncher.play(gameRally);

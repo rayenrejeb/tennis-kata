@@ -1,10 +1,10 @@
-package application;
+package rayen.rejeb.tennis.application;
 
-import static domain.model.PlayerEnum.PLAYER_A;
-import static domain.model.PlayerEnum.PLAYER_B;
+import static rayen.rejeb.tennis.domain.model.PlayerEnum.PLAYER_A;
+import static rayen.rejeb.tennis.domain.model.PlayerEnum.PLAYER_B;
 
-import domain.api.GameApi;
-import domain.model.Game;
+import rayen.rejeb.tennis.domain.api.GameApi;
+import rayen.rejeb.tennis.domain.model.Game;
 
 public class GameLauncher implements GameLauncherApi {
 

@@ -10,14 +10,14 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-import domain.api.GameApi;
-import domain.exception.DomainException;
-import domain.model.Game;
-import domain.model.Player;
-import domain.model.PlayerEnum;
-import domain.service.TennisGameService;
-import domain.spi.ScoreDisplaySpi;
-import infrastructure.ScoreDisplay;
+import rayen.rejeb.tennis.domain.api.GameApi;
+import rayen.rejeb.tennis.domain.exception.DomainException;
+import rayen.rejeb.tennis.domain.model.Game;
+import rayen.rejeb.tennis.domain.model.Player;
+import rayen.rejeb.tennis.domain.model.PlayerEnum;
+import rayen.rejeb.tennis.domain.service.TennisGameService;
+import rayen.rejeb.tennis.domain.spi.ScoreDisplaySpi;
+import rayen.rejeb.tennis.infrastructure.ScoreDisplay;
 import java.util.stream.Stream;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -39,10 +39,10 @@ class TennisGameTest {
     playerTwo = mock(Player.class);
     game = mock(Game.class);
     displaySpi = mock(ScoreDisplay.class);
-    when(game.getPlayerOne()).thenReturn(playerOne);
-    when(game.getPlayerTwo()).thenReturn(playerTwo);
-    when(playerOne.getName()).thenReturn(PlayerEnum.PLAYER_A);
-    when(playerTwo.getName()).thenReturn(PlayerEnum.PLAYER_B);
+    when(game.playerOne()).thenReturn(playerOne);
+    when(game.playerTwo()).thenReturn(playerTwo);
+    when(playerOne.getNameCharacter()).thenReturn(PlayerEnum.PLAYER_A.getPlayerName());
+    when(playerTwo.getNameCharacter()).thenReturn(PlayerEnum.PLAYER_B.getPlayerName());
     api = new TennisGameService(displaySpi);
   }
 
@@ -66,8 +66,8 @@ class TennisGameTest {
     // Given
     String rally = "ABABAB";
     Game game = mock(Game.class);
-    when(game.getPlayerOne()).thenReturn(playerOne);
-    when(game.getPlayerTwo()).thenReturn(playerTwo);
+    when(game.playerOne()).thenReturn(playerOne);
+    when(game.playerTwo()).thenReturn(playerTwo);
     when(game.playPoint(any())).thenReturn(this.playerOne);
     // When
     api.start(game, rally);

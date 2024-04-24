@@ -1,4 +1,4 @@
-package domain.exception;
+package rayen.rejeb.tennis.domain.exception;
 
 public class DomainException extends RuntimeException {
 

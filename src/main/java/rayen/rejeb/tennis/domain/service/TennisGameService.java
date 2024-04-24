@@ -1,13 +1,13 @@
-package domain.service;
+package rayen.rejeb.tennis.domain.service;
 
-import static domain.utils.StringUtils.isBlank;
+import static rayen.rejeb.tennis.domain.utils.StringUtils.isBlank;
 
-import domain.api.GameApi;
-import domain.exception.DomainException;
-import domain.model.Game;
-import domain.model.Player;
-import domain.model.PlayerEnum;
-import domain.spi.ScoreDisplaySpi;
+import rayen.rejeb.tennis.domain.api.GameApi;
+import rayen.rejeb.tennis.domain.exception.DomainException;
+import rayen.rejeb.tennis.domain.model.Game;
+import rayen.rejeb.tennis.domain.model.Player;
+import rayen.rejeb.tennis.domain.model.PlayerEnum;
+import rayen.rejeb.tennis.domain.spi.ScoreDisplaySpi;
 import java.util.List;
 import java.util.function.Predicate;
 
@@ -28,12 +28,12 @@ public class TennisGameService implements GameApi {
 
   @Override
   public void start(Game game, String gameScoreString) {
-    Player playerOne = game.getPlayerOne();
-    Player playerTwo = game.getPlayerTwo();
+    Player playerOne = game.playerOne();
+    Player playerTwo = game.playerTwo();
     List<Character> rally = processGameRally(
         gameScoreString,
-        playerOne.getName().getPlayerName(),
-        playerTwo.getName().getPlayerName()
+        playerOne.getNameCharacter(),
+        playerTwo.getNameCharacter()
     );
     rally
         .stream()
@@ -63,7 +63,7 @@ public class TennisGameService implements GameApi {
         .anyMatch(value -> !labels.contains(value));
     if (containsInvalidLabels) {
       throw new DomainException(
-          "Game rally contains invalid labels, different than " + playerLabels,
+          "Game rally contains invalid labels, different than " + labels,
           getClass().getSimpleName()
       );
     }

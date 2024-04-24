@@ -6,7 +6,9 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
-import domain.api.GameApi;
+import rayen.rejeb.tennis.application.GameLauncher;
+import rayen.rejeb.tennis.application.GameLauncherApi;
+import rayen.rejeb.tennis.domain.api.GameApi;
 import org.junit.jupiter.api.Test;
 
 class GameLauncherTest {

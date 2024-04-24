@@ -47,7 +47,7 @@
         <configuration>
           <archive>
             <manifest>
-              <mainClass>TennisApplication</mainClass>
+              <mainClass>rayen.rejeb.tennis.TennisApplication</mainClass>
             </manifest>
           </archive>
         </configuration>
