@@ -1,5 +1,6 @@
 package domain.tennis;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
@@ -9,6 +10,9 @@ import static org.mockito.Mockito.only;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
+import static rayen.rejeb.tennis.domain.model.PlayerEnum.PLAYER_A;
+import static rayen.rejeb.tennis.domain.model.PlayerEnum.PLAYER_B;
+import static rayen.rejeb.tennis.domain.model.ScoreEnum.FIFTEEN;
 
 import rayen.rejeb.tennis.domain.api.GameApi;
 import rayen.rejeb.tennis.domain.exception.DomainException;
@@ -41,8 +45,8 @@ class TennisGameTest {
     displaySpi = mock(ScoreDisplay.class);
     when(game.playerOne()).thenReturn(playerOne);
     when(game.playerTwo()).thenReturn(playerTwo);
-    when(playerOne.getNameCharacter()).thenReturn(PlayerEnum.PLAYER_A.getPlayerName());
-    when(playerTwo.getNameCharacter()).thenReturn(PlayerEnum.PLAYER_B.getPlayerName());
+    when(playerOne.getNameCharacter()).thenReturn(PLAYER_A.getPlayerName());
+    when(playerTwo.getNameCharacter()).thenReturn(PLAYER_B.getPlayerName());
     api = new TennisGameService(displaySpi);
   }
 
@@ -50,7 +54,7 @@ class TennisGameTest {
   void should_create_new_game() {
     // Given
     // When
-    var result = api.createNewGame(PlayerEnum.PLAYER_A, PlayerEnum.PLAYER_B);
+    var result = api.createNewGame(PLAYER_A, PLAYER_B);
     // Then
     assertTrue(result instanceof Game);
   }
@@ -102,6 +106,18 @@ class TennisGameTest {
         Arguments.of("should not validate space", " "),
         Arguments.of("should not validate rally with wrong players", "ABC", true)
     );
+  }
+
+  @Test
+  void should_play_game() {
+    // Given
+    var playerA = new Player(PLAYER_A);
+    var playerB = new Player(PLAYER_B);
+    var game = new Game(playerA, playerB);
+    // When
+    game.playPoint('A');
+    // Then
+    assertEquals(FIFTEEN.getActualScore(), playerA.getActualScore());
   }
 
 }

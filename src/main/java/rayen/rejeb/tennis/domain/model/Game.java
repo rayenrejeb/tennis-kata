@@ -10,10 +10,10 @@ public record Game(Player playerOne, Player playerTwo) {
   }
 
   public Player designateWinner() {
-    if (playerOne.hasWon()) {
+    if (Boolean.TRUE.equals(playerOne.hasWon())) {
       return playerOne;
     }
-    if (playerTwo.hasWon()) {
+    if (Boolean.TRUE.equals(playerTwo.hasWon())) {
       return playerTwo;
     }
     throw new DomainException("Game not finished yet", getClass().getSimpleName());
